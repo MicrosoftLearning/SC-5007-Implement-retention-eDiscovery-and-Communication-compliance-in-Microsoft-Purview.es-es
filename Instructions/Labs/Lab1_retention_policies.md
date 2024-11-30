@@ -43,7 +43,7 @@ Aquí, crearás una directiva de retención que se aplicará a toda la organizac
    - **Descripción**: `All locations except for teams`
 
 1. Selecciona **Siguiente**.
-1. En la **página Ámbito de la directiva**, selecciona **Siguiente**.
+1. En la página **Ámbito de directiva**, selecciona **Siguiente**.
 1. En la página **Elegir el tipo de directiva de retención que se va a crear**, selecciona **Estático** y, después, selecciona **Siguiente**.
 1. En la página **Elegir dónde aplicar esta directiva**, habilita:
 
