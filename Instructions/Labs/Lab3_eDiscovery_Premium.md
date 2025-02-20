@@ -30,20 +30,19 @@ La tarea consistirá en crear y administrar casos de eDiscovery que cumplan los 
 Para exportar archivos, necesitarás permisos específicos debido al acceso directo que esta opción concede a los archivos de usuario.
 
 1. En Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión.
-1. Selecciona la tarjeta **Configuración**.
-
-   Si no ves la tarjeta **Configuración**, selecciona **Ver todas las soluciones** y busca **Configuración** en la sección **Principal**.
-
+1. Selecciona **Configuración** en el panel de navegación de la izquierda.
 1. En el panel de navegación izquierdo, expande **Roles y ámbitos** y, después, selecciona **Grupos de roles**.
 1. En la página **Grupos de roles para soluciones de Microsoft Purview**, selecciona **Administrador de eDiscovery**.
 1. En la página flotante **Administrador de eDiscovery** de la derecha, selecciona **Editar**.
 1. En la página **Administrar Administrador de eDiscovery**, selecciona **Elegir usuarios**.
-1. En la página flotante **Elegir usuarios** de la derecha, selecciona el usuario que usarás para realizar este ejercicio interactivo y, después, selecciona **Seleccionar**.
+1. En la página flotante **Elegir usuarios** de la derecha, selecciona el usuario que usarás para realizar esta investigación de eDiscovery en los pasos siguientes y, después, selecciona **Seleccionar**.
+
+    >**Nota**: asegúrate de seleccionar el usuario que revisará los datos y exportará los resultados de la búsqueda.
+
 1. De nuevo en la página **Administrar administrador de eDiscovery**, selecciona **Siguiente**.
 1. En la página **Administrar Administrador de eDiscovery**, selecciona **Siguiente**.
 1. En la página **Revisar el grupo de roles y finalizar**, selecciona **Guardar** para agregar el usuario al grupo de roles de administrador de eDiscovery.
 1. Una vez que hayas agregado correctamente los usuarios, selecciona **Listo** en la página **El grupo de roles se actualizó correctamente**.
-1. Selecciona **Inicio** para volver a la página principal del Portal de Microsoft Purview.
 
 Has concedido correctamente el permiso de administrador de eDiscovery.
 
@@ -51,19 +50,17 @@ Has concedido correctamente el permiso de administrador de eDiscovery.
 
 Ahora que tienes los permisos necesarios, podrás crear un nuevo caso de eDiscovery para comenzar la investigación.
 
-1. Deberías encontrarte en la página principal del Portal de Microsoft Purview.
+1. En Microsoft Purview, selecciona **Soluciones** > **eDiscovery**.
 
-   Si no es así, en Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión.
+   Esto te llevará directamente a la experiencia **Clásica** de **eDiscovery (Premium)**.
 
-1. Selecciona **Ver soluciones**.
-1. En **Riesgo y cumplimiento**, selecciona la tarjeta **eDiscovery**.
-1. En el panel de navegación izquierdo, expande **Casos Premium** y selecciona **Casos**.
-1. En la página **eDiscovery (Premium)**, selecciona **+ Crear un caso**.
+1. En la página **eDiscovery (Premium)**, selecciona la pestaña para **Casos** y, después, selecciona **+ Crear un caso**.
 1. En la página flotante **Asignar nombre al caso** de la derecha, escribe:
 
    - **Nombre**: `Legal Investigation 2024`
    - **Descripción**: `eDiscovery case for the 2024 legal investigation involving relevant emails and documents.`
 
+1. Seleccione **Siguiente**.
 1. En la página **Agregar miembros del equipo y configurar la configuración**, asegúrate de agregar el usuario que llevará a cabo la investigación y selecciona **Siguiente**.
 1. En la página **Revisar el caso**, selecciona **Enviar** y, después, **Listo**.
 
@@ -74,9 +71,6 @@ Has creado correctamente un nuevo caso de eDiscovery denominado _Legal Investiga
 Ahora que se ha creado el caso, deberás agregar custodios. Los custodios son personas que pueden poseer información relevante para la investigación.
 
 1. Después de crear el caso en la tarea anterior, debes encontrarte en la pestaña **Información general** del caso **Legal Investigation 2024**.
-
-   Si no es así, en Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión. Selecciona la tarjeta **eDiscovery** en la sección **Riesgo y cumplimiento**. Selecciona **Casos Premium** > **Casos** y selecciona el caso recién creado **Legal Investigation 2024**.
-
 1. Selecciona la pestaña **Orígenes de datos** en la navegación superior y, después, selecciona **Agregar nuevo origen de datos** > **Agregar nuevos custodios**.
 1. En la página flotante **Nuevo custodio**, en **Seleccionar custodio** agrega custodios a tu caso y selecciona **Siguiente**.
 1. En la página **Configuración de suspensión**, asegúrate de que los custodios que agregaste en el paso anterior están seleccionados para colocar en espera.
@@ -89,9 +83,6 @@ Has agregado correctamente custodios al caso _Legal Investigation 2024_.
 Con los custodios agregados, ahora podrás ejecutar un cálculo de la recopilación para obtener información general sobre el volumen de datos y su relevancia.
 
 1. Después de agregar custodios al caso en la tarea anterior, todavía debes estar en la pestaña **Orígenes de datos** del caso **Legal Investigation 2024**.  
-
-   Si no es así, en Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión. Selecciona la tarjeta **eDiscovery** en la sección **Riesgo y cumplimiento**. Selecciona **Casos Premium** > **Casos** y selecciona el caso recién creado **Legal Investigation 2024**.
-
 1. Selecciona la pestaña **Colecciones** en el panel de navegación superior y, después, selecciona **+ Nueva colección**.
 1. En la configuración **Nueva colección**, asigna a la colección un **nombre y una descripción**. Especifique:
 
@@ -112,6 +103,10 @@ Con los custodios agregados, ahora podrás ejecutar un cálculo de la recopilaci
 1. En la página **Definir la consulta de búsqueda**, usa el generador de consultas para crear una búsqueda para buscar contenido relevante para el caso:
 
    - Usa el operador **AND** para buscar **Palabras clave** **iguales**a `legal`.
+
+    >**Nota**: es posible que tengas que eliminar la opción **Seleccionar un filtro** después de crear la consulta de búsqueda para buscar palabras clave iguales a **legal**. Si esta opción está presente, impide que agregues el subgrupo en el paso siguiente.
+    >![Captura de pantalla que muestra el generador de consultas en eDiscovery Premium.](./Media/ediscovery-subgroup-bug.png)
+
    - Selecciona **Agregar un subgrupo**.
    - Usa el operador **OR** para buscar **Palabras clave** **iguales**a `contract`.
 
@@ -141,9 +136,6 @@ Has creado y revisado correctamente una colección denominada _Colección de dat
 Una vez que la recopilación sea satisfactoria, la comprometerás a un conjunto de revisión para un análisis detallado.
 
 1. Después de crear el cálculo de la recopilación en la tarea anterior, deberías estar todavía en la pestaña **Colecciones** del caso **Legal Investigation 2024**.  
-
-   Si no es así, en Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión. Selecciona la tarjeta **eDiscovery** en la sección **Riesgo y cumplimiento**. Selecciona la pestaña **Casos Premium** > **Casos** > **Legal Investigation 2024** > **Colecciones**.
-
 1. Selecciona la colección **Colección de datos legales**.
 1. En la página flotante **Colección de datos legales** de la derecha, selecciona **Confirmar colección**.
 1. En la página **Confirmar elementos en un conjunto de revisión**, asegúrate de que la opción **Agregar al nuevo conjunto de revisión** está seleccionada y asígnale el nombre `Legal Case Review`.
@@ -154,9 +146,6 @@ Has comprometido correctamente la colección a un conjunto de revisión.
 ## Tarea 6: Exploración del conjunto de revisión
 
 1. Después de asignar la colección a un conjunto de revisión en la tarea anterior, deberías estar todavía en la pestaña **Colecciones** del caso **Legal Investigation 2024**.
-
-   Si no es así, en Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión. Selecciona la tarjeta **eDiscovery** en la sección **Riesgo y cumplimiento**. Selecciona **Casos Premiums** > **Casos** > **Legal Investigation 2024**.
-
 1. Selecciona la pestaña **Conjuntos de revisión** en la navegación superior y, después, selecciona el conjunto de revisión **Legal Case Review** recién creado.
 1. En la página flotante **Legal Case Review** de la derecha, selecciona **Abrir conjunto de revisión** en la parte inferior de la página.
 1. Explora lo que puedes hacer con los elementos del conjunto de revisión:
@@ -180,9 +169,6 @@ Has abierto y revisado correctamente el conjunto de revisión.
 Para guardar el trabajo y habilitar el análisis adicional, exportarás los resultados de la búsqueda.
 
 1. Todavía deberías estar en el conjunto de revisión **Legal Case Review** en eDiscovery (Premium).
-
-   Si no es así, en Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión. Selecciona la tarjeta **eDiscovery** en la sección **Riesgo y cumplimiento**. Selecciona la pestaña **Casos Premium** > **Casos** > **Legal Investigation 2024** > **Conjunto de revisión** > **Legal Case Review**.
-
 1. Activa la casilla situada junto a los elementos que deseas exportar para su posterior análisis.
 1. Selecciona el elemento desplegable para **Acciones** > **Exportar**.
 

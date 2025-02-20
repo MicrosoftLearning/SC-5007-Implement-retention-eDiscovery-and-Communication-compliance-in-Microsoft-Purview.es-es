@@ -26,17 +26,13 @@ La tarea consistirá en crear y administrar una directiva de retención que cump
 Aquí, crearás una directiva de retención que se aplicará a toda la organización.
 
 1. En Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión.
-1. Aparecerá un mensaje sobre el nuevo Portal de Microsoft Purview en la pantalla. Selecciona la opción para aceptar los términos de divulgación del flujo de datos y la declaración de privacidad y, después, selecciona **Probar ahora**.
+1. Aparecerá un mensaje sobre el nuevo Portal de Microsoft Purview en la pantalla. Selecciona la opción para aceptar los términos de divulgación del flujo de datos y la declaración de privacidad y, después, selecciona **Comenzar**.
 
-    >![Captura de pantalla de la pantalla Bienvenido al nuevo Portal de Microsoft Purview.](./Media/welcome-purview-portal.png)
+    >![Captura de pantalla que muestra la pantalla de bienvenida al nuevo Microsoft Purview portal.](./Media/welcome-purview-portal.png)
 
-1. Selecciona **Ver soluciones**.
-1. En **Gobernanza de datos**, selecciona la tarjeta **Administración del ciclo de vida de los datos**.
-
-    >![Captura de pantalla que muestra la tarjeta Administración del ciclo de vida de los datos en el Portal de Microsoft Purview.](./Media/data-lifecycle-management-card.png)
-
+1. Selecciona **Soluciones** > **Administración del ciclo de vida de datos**.
 1. Expande **Directivas** y, después, selecciona **Directivas de retención** en el panel de navegación izquierdo.
-1. Selecciona **+ Nuevas directivas de retención**.
+1. Selecciona **+ Nueva directiva de retención**.
 1. En la página **Nombre de la directiva de retención**, escribe el nombre y la descripción:
 
    - **Nombre**: `Company wide`
@@ -63,8 +59,6 @@ Aquí, crearás una directiva de retención que se aplicará a toda la organizac
 1. Selecciona **Siguiente**.
 1. En la página **Revisar y finalizar**, selecciona **Enviar**.
 1. Una vez creada la directiva, selecciona **Listo**.
-
-Has creado correctamente una directiva de retención para varias ubicaciones. Esta directiva conserva los elementos durante tres años a partir de la fecha de la última modificación.
 
 Has creado correctamente una directiva de retención para toda la empresa que conserva los elementos durante tres años a partir de la fecha de la última modificación.
 
@@ -136,7 +130,7 @@ En esta tarea, usarás PowerShell para crear y administrar directivas de retenci
     Connect-IPPSSession
     ```
 
-1. Si se te solicita, inicia sesión como usuario con los permisos adecuados.
+1. Cuando se te solicite, inicia sesión como usuario con los permisos adecuados.
 1. Ejecuta el siguiente cmdlet para crear la primera directiva de retención para todas las ubicaciones excepto para Teams:
 
     ```powershell
@@ -156,8 +150,7 @@ Has creado correctamente directivas de retención a través de PowerShell con un
 En este caso, crearás una directiva de retención con un ámbito adaptable destinado a departamentos específicos, como el legal y el comercial.
 
 1. En Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión.
-1. Selecciona **Ver soluciones**.
-1. En **Núcleo**, selecciona la tarjeta **Configuración**.
+1. Seleccione **Settings** (Configuración) en la barra de navegación izquierda.
 1. Expande **Roles y ámbitos** y selecciona **Ámbitos adaptables**.
 1. En la página **Ámbitos adaptables**, selecciona **+ Crear ámbito**.
 1. En la **página Nombre del ámbito de directiva adaptable** escribe:
@@ -174,19 +167,18 @@ En este caso, crearás una directiva de retención con un ámbito adaptable dest
    - **Operador**: is equal to
    - **Valor**: `Legal`
 
-1. Agrega un segundo atributo seleccionando el botón **+ Agregar atributo** con valores:
+1. Agrega un segundo atributo con el botón **+ Agregar atributo** con valores:
 
    - **Operador de consulta**: Or
    - **Atributo**: Departamento
    - **Operador**: is equal to
-   - **Valor**: Comercial
+   - **Valor**: `Retail`
 
     >![Captura de pantalla que muestra la consulta para definir los valores de los usuarios.](./Media/query-to-define-users.png)
 
 1. Selecciona **Siguiente** y, después, en **Enviar** en la página **Revisar y finalizar**.
 1. Una vez creado el ámbito, selecciona **Listo** para volver a la página **Ámbitos adaptables**.
-1. En el panel de navegación izquierdo, selecciona **Inicio** para volver a la página principal del Portal de Microsoft Purview.
-1. Selecciona **Ver todas las soluciones** y, después, selecciona **Administración del ciclo de vida de los datos** en **Gobernanza de datos**.
+1. Selecciona **Soluciones** > **Administración del ciclo de vida de datos**.
 1. Expande **Directivas** y selecciona **Directivas de retención**.
 1. En la página **Directivas de retención**, selecciona **+ Nueva directiva de retención**.
 1. En la **página Nombre a la directiva de retención**, escribe:
@@ -198,7 +190,12 @@ En este caso, crearás una directiva de retención con un ámbito adaptable dest
 1. En la página **Ámbito de directiva**, selecciona **Siguiente**.
 1. En la página **Elegir el tipo de directiva de retención que se va a crear**, selecciona **Adaptable** y, después, **Siguiente**.
 1. En la página **Elegir ámbitos y ubicaciones de directivas adaptables**, selecciona **+ Agregar ámbitos** y elige el ámbito **Retención de documentos legales**.
-1. En **Elegir ubicaciones para aplicar la directiva**, asegúrate de que los **buzones de Exchange** y las **cuentas de OneDrive** estén habilitados y, a después, selecciona **Siguiente**.
+1. En **Elegir las ubicaciones donde aplicar la directiva** habilita:
+
+   - Buzones de Exchange
+   - Cuentas de OneDrive
+
+1. Seleccione **Siguiente**.
 1. En la página **Decidir si desea conservar el contenido, eliminarlo o ambos**, escribe:
 
    - **Retener los elementos durante un período específico**: 5 años.

@@ -25,8 +25,7 @@ La tarea consistirá en crear y administrar etiquetas de retención que cumplan 
 En esta tarea, crearás etiquetas de retención que se pueden asignar a documentos y correos electrónicos.
 
 1. En Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión.
-1. Selecciona **Ver soluciones**.
-1. En **Riesgo y cumplimiento**, selecciona la tarjeta **Administración de registros**.
+1. Selecciona **Soluciones** > **Administración de registros**.
 1. En el panel de navegación izquierdo, selecciona **Plan de archivos**.
 1. En la página **Plan de archivos**, selecciona **+ Crear una etiqueta**.
 1. En la página **Nombre de la etiqueta de retención**, escribe:
@@ -73,9 +72,6 @@ Has creado correctamente etiquetas de retención para registros financieros con 
 Después de la Tarea 1, ahora publicarás las etiquetas de retención para que estén disponibles para que los usuarios las apliquen a documentos en correos electrónicos de Exchange y documentos de SharePoint.
 
 1. Todavía deberías encontrarte en la página **Plan de archivos** en el Portal de Microsoft Purview.
-
-   Si no es así, en Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión. Selecciona **Ver todas las soluciones** y, después, selecciona **Administración de registros** > **Plan de archivos**.
-
 1. Selecciona la marca de verificación situada junto a la etiqueta de retención **Registros financieros** y, después, selecciona el botón **Publicar etiquetas**.
 
     >![Captura de pantalla que muestra dónde seleccionar la etiqueta de retención y el botón Publicar etiquetas.](./Media/publish-labels.png)
@@ -91,7 +87,7 @@ Después de la Tarea 1, ahora publicarás las etiquetas de retención para que e
    - Cuentas de OneDrive
 
 1. Asegúrate de que los buzones y sitios de Grupos de Microsoft 365 estén establecidos en **Desactivado** y, después, selecciona **Siguiente**.
-1. En la página **Nombre de la directiva**, escribe:
+1. En la página **Nombre de la directiva** escribe:
 
    - Nombre: `Financial Records Retention Label`
    - Description (Descripción): `Retention label for financial records with a seven-year retention period.`
@@ -105,9 +101,9 @@ Has publicado correctamente la etiqueta de retención para los registros financi
 
 Después de la tarea 1, ahora aplicarás automáticamente la etiqueta de retención para registros de RR. HH. con el fin de conservar la información.
 
-1. Todavía deberías encontrarte en **Administración de registros** en el Portal de Microsoft Purview. 
+1. Todavía deberías encontrarte en **Administración de registros** en el Portal de Microsoft Purview.
 
-   Si no es así, en Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión. Selecciona **Ver todas las soluciones** y, después, selecciona **Administración de registros**.
+   Si no es así, en Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión. Selecciona **Soluciones** > **Administración de registros**.
 
 1. En el panel de navegación izquierdo, expande **Directivas** y, después, selecciona **Directivas de etiquetas**.
 1. Selecciona **Aplicar automáticamente una etiqueta** para iniciar la configuración de **Crear directiva de etiquetado automático**.
