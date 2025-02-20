@@ -22,17 +22,16 @@ Los inquilinos no se deben convertir a suscripciones de pago. Los inquilinos obt
 En esta tarea, crearás una directiva con una plantilla predefinida para abordar rápidamente escenarios comunes de cumplimiento.
 
 1. En Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión.
-1. Selecciona **Ver soluciones**.
-1. En **Riesgo y cumplimiento**, selecciona la tarjeta **Cumplimiento de comunicaciones**.
+1. Selecciona **Soluciones** > **Cumplimiento de comunicaciones**.
 1. En el panel de navegación izquierdo, selecciona **Directivas**.
 1. Selecciona **Crear directiva** y revisa las plantillas de directiva disponibles:
 
-   - **Interacciones de Copilot**: supervisa todas interacciones con Copilot para Microsoft 365.
+   - **Interacciones de Microsoft Copilot**: supervisa todas las interacciones con Copilot para Microsoft 365.
    - **Contenido inapropiado**: detecta el contenido de odio, violencia, sexual y de autolesiones en Microsoft Teams.
    - **Texto inapropiado**: marca amenazas, discriminación y acoso en Exchange Online, Microsoft Teams y Viva Engage.
    - **Imágenes inapropiadas**: identifica imágenes adultas y subidas de tono en Exchange Online y Microsoft Teams.
    - **Información confidencial**: supervisa la información confidencial en Exchange Online, Microsoft Teams y Viva Engage con un porcentaje de revisión inferior.
-   - **Cumplimiento normativo**: asegura el cumplimiento normativo financiero en Exchange Online, Microsoft Teams y Viva Engage.
+   - **Cumplimiento normativo financiero**: asegura el cumplimiento normativo financiero en Exchange Online, Microsoft Teams y Viva Engage.
    - **Conflicto de interés**: detecta posibles conflictos de interés en Exchange Online, Microsoft Teams y Viva Engage.
 
 1. Selecciona la plantilla de directiva para **Detectar texto inapropiado**.
@@ -46,9 +45,6 @@ Has creado correctamente una directiva de cumplimiento de comunicaciones con la 
 Aquí modificarás una plantilla de directiva para adaptarla a necesidades organizativas específicas.
 
 1. Todavía deberías estar en la página **Directivas** en **Cumplimiento de comunicaciones** en el Portal de Microsoft Purview.
-
-   Si no es así, en Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión. Selecciona **Ver todas las soluciones** >  tarjeta **Cumplimiento de comunicaciones** en **Riesgo y Cumplimiento**.
-
 1. Selecciona **Crear directiva** > **Detectar imágenes inapropiadas**.
 1. En la página flotante **Detectar comunicaciones para imágenes inapropiadas** de la derecha, selecciona **Personalizar directiva** en la parte inferior de la página flotante.
 1. Selecciona **Personalizar directiva** en la parte inferior de la página flotante.
@@ -71,9 +67,6 @@ Has personalizado correctamente una directiva de cumplimiento de comunicaciones 
 En esta tarea, crearás una directiva de cumplimiento de comunicación desde cero para cumplir los requisitos de cumplimiento únicos.
 
 1. Todavía deberías estar en la página **Directivas** en **Cumplimiento de comunicaciones** en el Portal de Microsoft Purview.
-
-   Si no es así, en Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión. Selecciona **Ver todas las soluciones** >  tarjeta **Cumplimiento de comunicaciones** en **Riesgo y Cumplimiento**.
-
 1. Selecciona **Crear directiva** > **Directiva personalizada**.
 1. En la página **Nombre y descripción de la directiva** escribe:
 
@@ -97,8 +90,7 @@ En esta tarea, crearás una directiva de cumplimiento de comunicación desde cer
 
 1. Selecciona **Siguiente**.
 1. En la página **Elegir condiciones y porcentaje de revisión**, deja los valores predeterminados seleccionados para **Dirección de comunicación**.
-1. En **Condiciones**, habilita la opción para usar el **Generador de nuevas condiciones (versión preliminar)**.
-1. Selecciona **+ Agregar condición** > **Contenido coincide con clasificador entrenable**.
+1. En **Condiciones**, selecciona **+ Agregar condición** > **Contenido coincide con clasificador entrenable**.
 1. En **Contenido coincide con clasificadores entrenables**, selecciona **Agregar** > **Clasificadores entrenables**.
 1. En la página flotante **Clasificadores entrenables** de la derecha, selecciona clasificadores para **Colusión normativa**, **Manipulación de existencias**, **Divulgación no autorizada** y **Sabotaje corporativo**.
 1. Selecciona **Agregar** en la parte inferior de la página flotante **Clasificadores entrenables** de la derecha.
