@@ -145,64 +145,68 @@ En esta tarea, usarás PowerShell para crear y administrar directivas de retenci
 
 Has creado correctamente directivas de retención a través de PowerShell con un período de retención de tres años.
 
-## Tarea 4: Creación de una directiva de retención con un ámbito adaptable
+<!--- Commenting out until adaptive scope issue is resolved
 
-En este caso, crearás una directiva de retención con un ámbito adaptable destinado a departamentos específicos, como el legal y el comercial.
+## Task 4 – Create retention policy with adaptive scope
 
-1. En Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión.
-1. Seleccione **Settings** (Configuración) en la barra de navegación izquierda.
-1. Expande **Roles y ámbitos** y selecciona **Ámbitos adaptables**.
-1. En la página **Ámbitos adaptables**, selecciona **+ Crear ámbito**.
-1. En la **página Nombre del ámbito de directiva adaptable** escribe:
+Here, you will create a retention policy with adaptive scope targeting specific departments like Legal and Retail.
 
-   - **Nombre**: `Legal Documents Retention`
-   - **Descripción**: `Retention for legal related documents`
+1. In Microsoft Edge, navigate to the Microsoft Purview portal, `https://purview.microsoft.com`, and log in.
+1. Select **Settings** from the left navigation bar.
+1. Expand **Roles and scopes** then select **Adaptive scopes**.
+1. On the **Adaptive scopes** page select **+ Create scope**.
+1. On the **Name your adaptive policy scope page**, enter:
 
-1. Selecciona **Siguiente**.
-1. En la **página Asignar unidades de administración**, selecciona **Siguiente**.
-1. En la página **¿Qué tipo de ámbito deseas crear?**, selecciona **Usuarios** y, después, **Siguiente**.
-1. En la página **Crear la consulta para definir usuarios**, en **Atributos de usuario**, selecciona:
+   - **Name**: `Legal Documents Retention`
+   - **Description**: `Retention for legal related documents`
 
-   - **Atributo**: Departamento
-   - **Operador**: is equal to
-   - **Valor**: `Legal`
+1. Select **Next**.
+1. On the **Assign admin unit page**, select **Next**.
+1. On the **What type of scope do you want to create?** page, select **Users** and then **Next**.
+1. On the **Create the query to define users** page, under **User attributes**, select:
 
-1. Agrega un segundo atributo con el botón **+ Agregar atributo** con valores:
+   - **Attribute**: Department
+   - **Operator**: is equal to
+   - **Value**: `Legal`
 
-   - **Operador de consulta**: Or
-   - **Atributo**: Departamento
-   - **Operador**: is equal to
-   - **Valor**: `Retail`
+1. Add a second attribute by selecting the **+ Add attribute** button with values:
 
-    >![Captura de pantalla que muestra la consulta para definir los valores de los usuarios.](./Media/query-to-define-users.png)
+   - **Query operator**: Or
+   - **Attribute**: Department
+   - **Operator**: is equal to
+   - **Value**: `Retail`
 
-1. Selecciona **Siguiente** y, después, en **Enviar** en la página **Revisar y finalizar**.
-1. Una vez creado el ámbito, selecciona **Listo** para volver a la página **Ámbitos adaptables**.
-1. Selecciona **Soluciones** > **Administración del ciclo de vida de datos**.
-1. Expande **Directivas** y selecciona **Directivas de retención**.
-1. En la página **Directivas de retención**, selecciona **+ Nueva directiva de retención**.
-1. En la **página Nombre a la directiva de retención**, escribe:
+    >![Screenshot showing the query to define users values.](./Media/query-to-define-users.png)
 
-   - **Nombre**: `Legal Data Retention`
-   - **Descripción**: `Retention of all documents within the legal and retail departments.`
+1. Select **Next** and then **Submit** on the **Review and finish** page.
+1. Once your scope has been created select **Done** to get back to the **Adaptive scopes** page.
+1. Select **Solutions** > **Data Lifecycle Management**.
+1. Expand **Policies** then select **Retention policies**.
+1. On the **Retention policies** page select **+ New retention policy**.
+1. On the **Name your retention policy page**, enter:
 
-1. Selecciona **Siguiente**.
-1. En la página **Ámbito de directiva**, selecciona **Siguiente**.
-1. En la página **Elegir el tipo de directiva de retención que se va a crear**, selecciona **Adaptable** y, después, **Siguiente**.
-1. En la página **Elegir ámbitos y ubicaciones de directivas adaptables**, selecciona **+ Agregar ámbitos** y elige el ámbito **Retención de documentos legales**.
-1. En **Elegir las ubicaciones donde aplicar la directiva** habilita:
+   - **Name**: `Legal Data Retention`
+   - **Description**: `Retention of all documents within the legal and retail departments.`
 
-   - Buzones de Exchange
-   - Cuentas de OneDrive
+1. Select **Next**.
+1. On the **Policy Scope** page, select **Next**.
+1. On the **Choose the type of retention policy to create** page, select **Adaptive** and then **Next**.
+1. On the **Choose adaptive policy scopes and locations** page, select **+ Add scopes** and choose the **Legal Documents Retention** scope.
+1. Under **Choose locations to apply the policy** enable:
 
-1. Seleccione **Siguiente**.
-1. En la página **Decidir si desea conservar el contenido, eliminarlo o ambos**, escribe:
+   - Exchange mailboxes
+   - OneDrive accounts
 
-   - **Retener los elementos durante un período específico**: 5 años.
-   - **Iniciar el período de retención en función de**: cuándo se crean los elementos.
-   - **Al final del período de retención**: no hacer nada
+1. Select **Next**.
+1. On the **Decide if you want to retain content, delete it, or both** page, enter:
 
-1. Selecciona **Siguiente** y, después, **Enviar** en **Revisar y finalizar**.
-1. Una vez creada la directiva, selecciona **Listo**.
+   - **Retain items for a specific period**: 5 years
+   - **Start the retention period based on**: When items were created
+   - **At the end of the retention period**: Do nothing
 
-Has aplicado correctamente un ámbito adaptable a una directiva de retención.
+1. Select **Next** and then **Submit** on the **Review and finish**.
+1. Once your policy is created, select **Done**.
+
+You have successfully applied an adaptive scope to a retention policy.
+
+--->
