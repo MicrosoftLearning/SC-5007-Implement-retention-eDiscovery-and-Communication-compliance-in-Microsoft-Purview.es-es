@@ -1,7 +1,7 @@
 ---
 lab:
-  task: Case investigation with eDiscovery (Premium)
-  exercise: Exercise 3 - Case investigation with eDiscovery (Premium)
+  task: Case investigation with eDiscovery
+  exercise: Exercise 3 - Case investigation with eDiscovery
 ---
 
 ## Inquilinos de WWL: términos de uso
@@ -14,183 +14,251 @@ Los inquilinos no se deben convertir a suscripciones de pago. Los inquilinos obt
 
 # Ejercicio 3: Tareas de aptitud
 
+Contoso sospecha que los datos confidenciales de pago, incluidos los números de tarjeta de crédito y de cuenta, se han controlado o filtrado incorrectamente. Como investigador, su trabajo consiste en usar eDiscovery de Microsoft Purview para crear un caso, buscar en orígenes de datos, identificar contenido confidencial y aplicar acciones de redacción antes de generar los resultados para el cumplimiento o la revisión legal.
+
 La tarea consistirá en crear y administrar casos de eDiscovery que cumplan los criterios de investigación:
 
-- **Crear un nuevo caso de eDiscovery**: configura un nuevo caso para iniciar la investigación.
-- **Agregar custodios al caso**: incluye personas relevantes que puedan tener datos pertinentes.
-- **Crear y ejecutar un cálculo de la recopilación**: analiza el volumen de datos y su relevancia para la investigación.
-- **Revisar y refinar el cálculo de la recopilación**: asegúrate de que la colección cumple los criterios.
-- **Confirmar la recopilación en un conjunto de revisión**: prepara los datos para su análisis detallado.
-- **Exportar los resultados de la búsqueda**: guarda los datos recopilados con fines de revisión y cumplimiento adicionales.
+- **Cree un nuevo caso de eDiscovery**: Configure un caso para administrar la investigación de datos de pago.
+- **Ejecutar una búsqueda de eDiscovery**: Busque en orígenes de datos para identificar los archivos que pueden contener información de la tarjeta de pago o de la cuenta.
+- **Agregue elementos a un conjunto de revisión**: Confirme los resultados de búsqueda en un conjunto de revisión para un análisis más profundo.
+- **Etiquete los elementos para revisar**: Aplique etiquetas de relevancia y reacción para organizar documentos para el caso.
+- **Aplicar difuminaciones**: Use herramientas de anotación para enmascarar detalles confidenciales, como números de tarjeta y cuenta.
+- **Exportar resultados**: Exporte los elementos censurados y etiquetados, junto con un informe de elementos, para producción.
 
->**Nota**: en este laboratorio se da por supuesto el acceso a un inquilino de M365 E5 con datos para explorar para realizar la investigación. Todavía puedes realizar este ejercicio sin datos, pero las recopilaciones y los conjuntos de revisión no producirán ningún resultado.
+   > **Nota**: en este laboratorio se da por supuesto el acceso a un inquilino de M365 E5 con datos para explorar para realizar la investigación. Todavía puedes realizar este ejercicio sin datos, pero las recopilaciones y los conjuntos de revisión no producirán ningún resultado.
 
-## Tarea 1: Concesión de permisos para eDiscovery (Premium)
+## Tarea 1: Concesión de permisos para eDiscovery
 
 Para exportar archivos, necesitarás permisos específicos debido al acceso directo que esta opción concede a los archivos de usuario.
 
 1. En Microsoft Edge, ve al Portal de Microsoft Purview, `https://purview.microsoft.com`, e inicia sesión.
+
 1. Selecciona **Configuración** en el panel de navegación de la izquierda.
+
 1. En el panel de navegación izquierdo, expande **Roles y ámbitos** y, después, selecciona **Grupos de roles**.
+
 1. En la página **Grupos de roles para soluciones de Microsoft Purview**, selecciona **Administrador de eDiscovery**.
+
 1. En la página flotante **Administrador de eDiscovery** de la derecha, selecciona **Editar**.
+
 1. En la página **Administrar Administrador de eDiscovery**, selecciona **Elegir usuarios**.
+
 1. En la página flotante **Elegir usuarios** de la derecha, selecciona el usuario que usarás para realizar esta investigación de eDiscovery en los pasos siguientes y, después, selecciona **Seleccionar**.
 
     >**Nota**: asegúrate de seleccionar el usuario que revisará los datos y exportará los resultados de la búsqueda.
 
 1. De nuevo en la página **Administrar administrador de eDiscovery**, selecciona **Siguiente**.
+
 1. En la página **Administrar Administrador de eDiscovery**, selecciona **Siguiente**.
+
 1. En la página **Revisar el grupo de roles y finalizar**, selecciona **Guardar** para agregar el usuario al grupo de roles de administrador de eDiscovery.
+
 1. Una vez que hayas agregado correctamente los usuarios, selecciona **Listo** en la página **El grupo de roles se actualizó correctamente**.
 
 Has concedido correctamente el permiso de administrador de eDiscovery.
 
-## Tarea 2: Creación de un caso de eDiscovery (premium)
+## Tarea 2: Crear un caso de eDiscovery
 
-Ahora que tienes los permisos necesarios, podrás crear un nuevo caso de eDiscovery para comenzar la investigación.
+En esta tarea, creará un nuevo caso de eDiscovery para administrar la investigación de datos de pago.
 
 1. En Microsoft Purview, selecciona **Soluciones** > **eDiscovery**.
 
-   Esto te llevará directamente a la experiencia **Clásica** de **eDiscovery (Premium)**.
+1. En la página **Casos**, seleccione **Crear caso**.
 
-1. En la página **eDiscovery (Premium)**, selecciona la pestaña para **Casos** y, después, selecciona **+ Crear un caso**.
-1. En la página flotante **Asignar nombre al caso** de la derecha, escribe:
+1. En la ventana del cuadro de diálogo **Nuevo caso**, escriba:
 
-   - **Nombre**: `Legal Investigation 2024`
-   - **Descripción**: `eDiscovery case for the 2024 legal investigation involving relevant emails and documents.`
+   - **Nombre del caso**: `Payment Data Leak Investigation`
+   - **Descripción del caso**: `Investigation into potential exposure of payment card and account data at Contoso.`
 
-1. Seleccione **Siguiente**.
-1. En la página **Agregar miembros del equipo y configurar la configuración**, asegúrate de agregar el usuario que llevará a cabo la investigación y selecciona **Siguiente**.
-1. En la página **Revisar el caso**, selecciona **Enviar** y, después, **Listo**.
+1. Seleccione **Crear**.
 
-Has creado correctamente un nuevo caso de eDiscovery denominado _Legal Investigation 2024_.
+   Una vez creado el caso, se le llevará directamente al nuevo caso.
 
-## Tarea 3: Adición de custodios al caso
+Ha creado correctamente un nuevo caso de eDiscovery denominado _Investigación de filtraciones de datos de pago_.
 
-Ahora que se ha creado el caso, deberás agregar custodios. Los custodios son personas que pueden poseer información relevante para la investigación.
+## Tarea 3: Creación de una búsqueda de eDiscovery
 
-1. Después de crear el caso en la tarea anterior, debes encontrarte en la pestaña **Información general** del caso **Legal Investigation 2024**.
-1. Selecciona la pestaña **Orígenes de datos** en la navegación superior y, después, selecciona **Agregar nuevo origen de datos** > **Agregar nuevos custodios**.
-1. En la página flotante **Nuevo custodio**, en **Seleccionar custodio** agrega custodios a tu caso y selecciona **Siguiente**.
-1. En la página **Configuración de suspensión**, asegúrate de que los custodios que agregaste en el paso anterior están seleccionados para colocar en espera.
-1. En la página **Revisar los custodios**, selecciona **Enviar** y, después, selecciona **Listo** una vez creados los nuevos custodios.
+En esta tarea, creará una búsqueda para buscar correos electrónicos y documentos que hacen referencia a datos confidenciales de pago.
 
-Has agregado correctamente custodios al caso _Legal Investigation 2024_.
+1. Seleccione **Crear una búsqueda**.
 
-## Tarea 4: Creación y ejecución de un cálculo de la recopilación
+1. En la ventana del cuadro de diálogo **Nueva búsqueda**, escriba:
 
-Con los custodios agregados, ahora podrás ejecutar un cálculo de la recopilación para obtener información general sobre el volumen de datos y su relevancia.
+   - **Nombre de búsqueda**: `Payment Data Exposure Search`
+   - **Descripción de la búsqueda**: `Find emails and documents that reference credit cards, debit cards, or account numbers.`
 
-1. Después de agregar custodios al caso en la tarea anterior, todavía debes estar en la pestaña **Orígenes de datos** del caso **Legal Investigation 2024**.  
-1. Selecciona la pestaña **Colecciones** en el panel de navegación superior y, después, selecciona **+ Nueva colección**.
-1. En la configuración **Nueva colección**, asigna a la colección un **nombre y una descripción**. Especifique:
+1. Seleccione **Crear**.
 
-   - **Nombre**: `Legal Data Collection`
-   - **Descripción**: `Collecting emails and documents relevant to the 2024 legal investigation.`
+1. En la página **Búsqueda de exposición de datos de pago**, seleccione **Agregar orígenes**.
 
-1. Selecciona **Siguiente**.
-1. En **Elegir orígenes de datos custodios**, selecciona **+ Seleccionar custodios**.
-1. En la página flotante **Seleccionar custodios** de la derecha, agrega los custodios que se agregaron al caso en la tarea anterior y, después, selecciona **Agregar**.
-1. De nuevo en la página **Elegir orígenes de datos custodios**, selecciona **Siguiente**.
-1. En **Elegir orígenes de datos no custodios**, selecciona **Siguiente**.
-1. En **Ubicaciones adicionales**, establece el estado en **Activado** para estas ubicaciones:
+1. En la página **Buscar origen**, **filtre** los orígenes para **Solo grupos**.
 
-   - Buzones de Exchange
-   - Carpetas públicas de Exchange
+1. Seleccione **Agregar orígenes para todo el inquilino** y deje las casillas seleccionadas para **Todas las personas y grupos** y **Todas las carpetas públicas**.
 
-1. Selecciona **Siguiente**.
-1. En la página **Definir la consulta de búsqueda**, usa el generador de consultas para crear una búsqueda para buscar contenido relevante para el caso:
+1. Seleccione **Guardar**.
 
-   - Usa el operador **AND** para buscar **Palabras clave** **iguales**a `legal`.
+1. De nuevo en la página **Búsqueda de exposición de datos de pago**, en el **Generador de condiciones**, agregue condiciones:
 
-    >**Nota**: es posible que tengas que eliminar la opción **Seleccionar un filtro** después de crear la consulta de búsqueda para buscar palabras clave iguales a **legal**. Si esta opción está presente, impide que agregues el subgrupo en el paso siguiente.
-    >![Captura de pantalla que muestra el generador de consultas en eDiscovery Premium.](./Media/ediscovery-subgroup-bug.png)
+   - En el primer cuadro, establezca **Palabras clave igual** y, a continuación, escriba `credit card`.
+   - En el segundo cuadro, escriba `debit card`.
+   - En el tercer cuadro, escriba `account number`.
 
-   - Selecciona **Agregar un subgrupo**.
-   - Usa el operador **OR** para buscar **Palabras clave** **iguales**a `contract`.
+   > **Nota**: Las condiciones se tratan como OR, por lo que la búsqueda devuelve elementos que incluyen tarjeta de crédito, tarjeta de débito o número de cuenta.
 
-    >![Captura de pantalla que muestra el generador de consultas en eDiscovery Premium.](./Media/ediscovery-query-builder.png)
+1. Seleccione **Ejecutar consulta**.
 
-1. Selecciona **Siguiente**.
-1. En la página **Revisar la colección y crearla**, selecciona **Enviar** y, después, selecciona **Listo** en la página **Nueva colección creada**.
-1. De nuevo en la página **Colecciones**, revisa el progreso del cálculo de la recopilación. Usa el botón **Actualizar** para actualizar la página y comprobar el estado del cálculo de la recopilación. Una vez que el estado del cálculo se actualiza a **Calculado** y el **Estado de la vista previa** se actualiza a **Correcto**, se completa el cálculo de la recopilación.
+1. En la página **Elegir resultados** de búsqueda, seleccione **Estadísticas** y, después, seleccione **Incluir informe de palabras clave de consulta**.
 
-    >![Captura de pantalla que muestra el botón Actualizar y el estado del cálculo de la recopilación.](./Media/collection-estimate-status.png)
+1. Seleccione **Ejecutar consulta** para iniciar la búsqueda.
 
-    >**Sugerencia**: una vez completado el cálculo de la recopilación, no dudes en experimentar con la creación de diferentes consultas o con el editor de KQL para búsquedas más avanzadas. Para ello, activa la casilla situada a la izquierda del cálculo de la recopilación y selecciona **Editar colección**. Esto te llevará directamente a la página **Definir la consulta de búsqueda**. Puedes modificar la consulta y enviar un nuevo cálculo de la recopilación para explorar cómo la consulta cambia el cálculo de la recopilación.
+   > **Nota**: Este proceso puede tardar unos 5 minutos en generar resultados.
 
-1. Selecciona **Colección de datos legales** y explora el cálculo de la recopilación.
+1. Cuando finalice la búsqueda, revise los resultados en la pestaña **Estadísticas**. Examine los recuentos de elementos, el volumen de datos y los aciertos de palabras clave.
 
-   - **Pestaña Resumen**: proporciona información general sobre las estadísticas de recopilación, incluidos los elementos recuperados, las ubicaciones con aciertos y los tipos de archivo.
-   - **Pestaña Orígenes de datos**: muestra información sobre los orígenes de datos custodios y no custodios incluidos en la colección.
-   - **Pestaña Estadísticas de búsqueda**: muestra estadísticas detalladas del último cálculo de la recopilación, incluido el número de elementos y el volumen de datos.
-   - **Pestaña Opciones de colección**: enumera y explica las distintas opciones disponibles al configurar una colección, como incluir datos adjuntos en la nube e hilos de conversaciones.
+1. Cambie a la pestaña **Ejemplo**. Seleccione **Generar resultados de ejemplo**.
 
-    >![Captura de pantalla que muestra las pestañas que se van a explorar en el cálculo de la recopilación de datos legales.](./Media/explore-collection-estimate.png)
+1. En la página **Generar vista de ejemplo**, deje los valores predeterminados seleccionados y, a continuación, seleccione **Ejecutar consulta**.
 
-Has creado y revisado correctamente una colección denominada _Colección de datos legales_.
+   > **Nota**: Este proceso puede tardar unos 5 minutos en generar resultados.
 
-## Tarea 5: Confirmación de la colección en un conjunto de revisión
+1. Una vez completada la consulta, revise los resultados.
 
-Una vez que la recopilación sea satisfactoria, la comprometerás a un conjunto de revisión para un análisis detallado.
+Ejecutó correctamente la búsqueda y revisó los resultados mediante las vistas Estadísticas y Ejemplo.
 
-1. Después de crear el cálculo de la recopilación en la tarea anterior, deberías estar todavía en la pestaña **Colecciones** del caso **Legal Investigation 2024**.  
-1. Selecciona la colección **Colección de datos legales**.
-1. En la página flotante **Colección de datos legales** de la derecha, selecciona **Confirmar colección**.
-1. En la página **Confirmar elementos en un conjunto de revisión**, asegúrate de que la opción **Agregar al nuevo conjunto de revisión** está seleccionada y asígnale el nombre `Legal Case Review`.
-1. Deja los demás valores predeterminados seleccionados y selecciona **Confirmar** para comprometer la colección a un conjunto de revisión.
+## Tarea 4: Agregar la búsqueda a un conjunto de revisión
 
-Has comprometido correctamente la colección a un conjunto de revisión.
+En esta tarea, confirma los resultados de búsqueda en un conjunto de revisión para que se puedan analizar más.
 
-## Tarea 6: Exploración del conjunto de revisión
+1. En la página **Búsqueda de exposición de datos de pago**, seleccione **Agregar al conjunto de revisión**.
 
-1. Después de asignar la colección a un conjunto de revisión en la tarea anterior, deberías estar todavía en la pestaña **Colecciones** del caso **Legal Investigation 2024**.
-1. Selecciona la pestaña **Conjuntos de revisión** en la navegación superior y, después, selecciona el conjunto de revisión **Legal Case Review** recién creado.
-1. En la página flotante **Legal Case Review** de la derecha, selecciona **Abrir conjunto de revisión** en la parte inferior de la página.
-1. Explora lo que puedes hacer con los elementos del conjunto de revisión:
+1. En el control flotante **Agregar al conjunto de revisión**, seleccione **Agregar al nuevo conjunto de revisión**.
 
-   1. **Filtros**: permite aplicar condiciones para restringir los elementos mostrados en el conjunto de revisión.
-   1. **Etiqueta**: permite etiquetar documentos con etiquetas específicas para mejorar la organización y la identificación.
-   1. **Grupo**: permite organizar el contenido del conjunto de revisión por elementos relacionados, como familias o conversaciones.
-   1. **Ver origen**: proporciona una vista enriquecida del documento seleccionado, que se muestra en su formato original.
-   1. **Ver texto sin formato**: muestra el texto extraído de un documento, ignorando las imágenes incrustadas y el formato.
-   1. **Anotación**: permite a los usuarios aplicar marcados, redacciones y otras anotaciones en el documento.
-   1. **Ver metadatos**: muestra varios metadatos asociados al documento seleccionado para obtener información detallada.
+   - Escriba un nombre: `Payment Data Review Set`.
 
-    >![Captura de pantalla que muestra las opciones disponibles para los conjuntos de revisión en eDiscovery Premium.](./Media/review-set.png)
+1. En **Seleccionar elementos que se van a incluir**, mantenga los **elementos indexados que coincidan con la consulta de búsqueda seleccionada**.
 
-1. Una vez que hayas explorado el conjunto de revisión, puedes exportar elementos para su análisis posterior.
+1. En **Seleccionar elementos de listas y datos adjuntos**, seleccione **Enumerar datos adjuntos** para que los archivos adjuntos se incluyan en el conjunto de revisión.
 
-Has abierto y revisado correctamente el conjunto de revisión.
+1. Deje todas las demás opciones en sus valores predeterminados y, a continuación, seleccione **Agregar al conjunto de revisión**.
 
-## Tarea 7: Exportación de los resultados de búsqueda
+   > **Nota**: Este proceso puede tardar unos 5 minutos en generar resultados.
 
-Para guardar el trabajo y habilitar el análisis adicional, exportarás los resultados de la búsqueda.
+Ha creado correctamente el **conjunto de revisión de datos de pago** y ha agregado los resultados de búsqueda a él.
 
-1. Todavía deberías estar en el conjunto de revisión **Legal Case Review** en eDiscovery (Premium).
-1. Activa la casilla situada junto a los elementos que deseas exportar para su posterior análisis.
-1. Selecciona el elemento desplegable para **Acciones** > **Exportar**.
+## Tarea 5: Revisar y etiquetar elementos
 
-    >![Captura de pantalla que muestra la opción para exportar un conjunto de revisión en eDiscovery Premium.](./Media/export-review-set.png)
+En esta tarea, filtrará los elementos establecidos y aplicará etiquetas para organizarlos para la investigación.
 
-1. En la página flotante **Opciones de exportación** de la derecha, escribe:
+1. En la página **Conjunto de revisión de datos de pago**, seleccione **Consulta** y, a continuación, configure:
 
-   - **Nombre de exportación**: `LegalCaseExport_July2024`
-   - **Descripción**: `Export of relevant emails and documents for the July 2024 legal case investigation.`
-   - **Exportar estos documentos**: solo documentos seleccionados
-   - **Expandir selección**: Ninguno
-   - **Opciones de salida**: estructura de directorios condensada
+   - Primera lista desplegable: **Palabras clave**
+   - Operador: **Es igual a cualquiera de**
+   - Escriba palabras clave:
 
-1. Selecciona el botón **Exportar** de la parte inferior de la página flotante.
+     - `Visa`
+     - `Master Card`
+   - Seleccione **+ Agregar condiciones**.
+   - Agregar condición:
 
-    >![Captura de pantalla que muestra las opciones de configuración para exportar un conjunto de revisión.](./Media/export-options-review-set.png)
+     - Campo: **Clase File**
+     - Operador: **Es igual a cualquiera de**
+     - Valor: `Document`
+   - Seleccione **Ejecutar consulta**.
 
-1. Debes recibir una notificación que indique que **Se ha creado un trabajo** para exportar el conjunto de revisión. Selecciona **Aceptar** en esta notificación.
-1. Para acceder al conjunto de revisión exportado, expande **Casos Premium** en el panel de navegación izquierdo y, después, selecciona **Casos**. Selecciona el caso **Legal Investigation 2024** y, después, la pestaña **Exportaciones** en la navegación superior.
-1. Selecciona la exportación **LegalCaseExport_July2024**.
-1. En la página flotante **LegalCaseExport_July2024** de la derecha, activa la casilla situada junto a la izquierda de cada archivo exportado y selecciona **Descargar**. Esto descargará un archivo .csv de resumen y un archivo ZIP de elementos exportados.
+1. Seleccione **Guardar** para guardar esta consulta de búsqueda. En el campo Nombre de filtro, escriba `Payment data docs`.
 
-    >**Sugerencia**: es posible que tengas que deshabilitar el bloqueador de elementos emergentes para descargar correctamente los archivos exportados.
+1. En la barra de comandos, seleccione **Etiquetar archivos**.
 
-Has exportado correctamente los resultados de búsqueda para su revisión.
+1. En el control flotante **Etiquetar archivos**, seleccione **Crear o editar etiquetas**.
+
+1. En la página **Administrar etiquetas**, configure:
+
+   - **Nombre de grupo de etiqueta**: `Relevance`
+
+     - **Nombre de etiqueta**: `Relevant`
+     - Seleccione **Agregar etiqueta** y, a continuación, agregue `Not relevant`
+   - Seleccione **Agregar grupo de etiquetas**.
+   - **Nombre de grupo de etiqueta**: `Review status`
+     - **Nombre de etiqueta**: `Needs redaction`
+
+1. Seleccione **Guardar** y luego **Cerrar**.
+
+1. En el control flotante **Etiquetar archivos**, etiquete el primer elemento como **Relevante** y el segundo elemento como **No relevante**.
+
+1. En el conjunto de revisión, busque **Contoso Purchasing Permissions - Q1.docx** de **Irvin S** con fecha del **2 de agosto de 2019**.
+
+1. Seleccione el elemento y etiquete que **necesita censura**.
+
+1. Seleccione **Cerrar** para cerrar el control flotante **Etiquetar archivos**.
+
+Ha etiquetado correctamente los documentos pertinentes, no relevantes y necesarios para la censura.
+
+## Tarea 6: Aplicar censura
+
+En esta tarea, se censura información confidencial de un documento del conjunto de revisión.
+
+1. En el **conjunto de revisión de datos de pago**, seleccione el elemento **Contoso Purchasing Permissions - Q1.docx** de **Irvin S** con fecha del **2 de agosto de 2019** para abrir el visor de documentos.
+
+1. En la barra de herramientas del visor, seleccione **Anotar**.
+
+1. En las herramientas de anotación, seleccione la lista desplegable de **Dibujo** y, a continuación, seleccione **Censura del área**.
+
+    >![Captura de pantalla que muestra dónde seleccionar Censura de área.](./Media/area-redaction.png)
+
+1. Con el cursor, dibuje un cuadro alrededor de la información confidencial del archivo, como:
+
+   - Número de tarjeta Visa
+   - Número de tarjeta MasterCard
+   - Número de cuenta bancaria
+
+1. Repita lo necesario hasta que se cubran todos los datos confidenciales.
+
+1. Cierre el visor de documentos.
+
+1. De nuevo en la página **Conjunto de revisión de datos de pago**, con el archivo **Contoso Purchasing Permissions - Q1.docx** seleccionado, seleccione **Acciones** > **Confirmar censuras en PDF**.
+
+   > **Nota**: Confirmar las censuras guarda un PDF censurado en el conjunto de revisión mientras mantiene el archivo original sin cambios.
+
+Ha aplicado correctamente las censuras y las ha confirmado en una copia de PDF censurada.
+
+## Tarea 7: Exportar resultados
+
+En esta tarea, exportará los elementos censurados y etiquetados del conjunto de revisión para producción.
+
+1. En el **conjunto de revisión de datos de pago**, active las casillas situadas junto a los elementos que desea exportar.
+
+   > Asegúrese de incluir el documento **Contoso Purchasing Permissions - Q1.docx** que censuró.
+
+1. En la barra de comandos, seleccione **Acciones** > **Exportar**.
+
+1. En el control flotante **Exportar**, configure:
+
+   - **Nombre de exportación**: `PaymentData_Export_2025`
+   - **Descripción**: `Export of review set items with redacted versions for Payment Data Leak Investigation.`
+
+1. En **Seleccionar elementos que se van a incluir en la exportación**:
+
+   - Elija **Solo documentos seleccionados**.
+   - Deje **Expandir los documentos seleccionados para incluir > Elementos familiares asociados** activados (esto garantiza que se incluyan los datos adjuntos).
+
+1. En **Tipo de exportación**, seleccione **Exportar elementos con informe de elementos**.
+
+   - Active la casilla **Exportar censura** para incluir los archivos PDF censurados y la casilla **Exportar etiquetas** para incluir información de etiquetas.
+
+1. En **Formato de exportación**, seleccione **Crear archivos .msg para los mensajes** y deje los demás valores predeterminados seleccionados.
+
+1. Seleccione **Exportar**.
+
+1. Seleccione el **Administrador de procesos** para ver el estado de la exportación.
+
+1. Seleccione **Actualizar** en el administrador de procesos hasta que el estado de exportación sea **Completado**.
+
+1. Cuando el estado sea **Completado**, seleccione la fila de la exportación.
+
+1. En el control flotante **Exportar**, seleccione todos los archivos en **Exportar paquetes** y, a continuación, **Descargar**.
+
+1. Seleccione una ubicación para descargar las exportaciones y vaya a la ubicación de las exportaciones descargadas.
+
+1. Explore los elementos del archivo ZIP.
+
+Ha creado un caso, ha buscado datos confidenciales, ha agregado elementos a un conjunto de revisión, ha aplicado etiquetas y censuras y exportó los resultados censurados. Estos son los pasos clave para realizar una investigación con Microsoft Purview eDiscovery.
